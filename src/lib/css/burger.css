@@ -1,0 +1,62 @@
+#hamburger {
+  display: none;
+
+  width: var(--gridCellSize);
+  height: calc(var(--gridCellSize));
+  
+  background: none;
+  border: none;
+  
+  margin: 0 var(--gridCellSize);
+  padding: 0;
+  
+  transition: all .25s ease;
+}
+
+#hamburger:hover .line {
+  background-color: #FFF;
+}
+
+#hamburger .line {
+  display: block;
+
+  width: calc(var(--gridCellSize) * .7);
+  height: 2px;
+  background-color: var(--colorTextBlue);
+
+  margin: 8px auto;
+
+  transition: all 200ms ease-in-out;
+}
+
+#hamburger.active > .line#top {
+  transform: translateY(10px);
+}
+
+#hamburger.active > .line#bot {
+  transform: translateY(-10px);
+}
+
+#mobile-menu {
+  position: absolute;
+  display: none;
+}
+
+#hamburger.hidden {
+  display: none;
+}
+
+/* Tablets */
+@media only screen and (max-width: 850px) {
+  #nav-container #nav-items {
+    display: none;
+  }
+  
+  #hamburger {
+    display: block;
+  }
+  
+  #hamburger:hover {
+    cursor: pointer;
+  }
+}
