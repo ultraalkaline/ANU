@@ -1,5 +1,6 @@
 // svelte.config.js
 import adapter from '@sveltejs/adapter-static';
+import { optimizeDeps } from 'vite';
 
 export default {
   kit: {

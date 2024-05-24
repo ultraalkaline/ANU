@@ -1,0 +1,47 @@
+.carousel {
+  width: 38rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  gap: 2rem;
+}
+
+.carousel .images {
+  display: flex;
+  width: 38rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel .image {
+  width: 38rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+.carousel .indicators {
+  display: flex;
+  flex-direction: row;
+  gap: .8rem;
+  z-index: 1;
+}
+
+.carousel .indicator {
+  width: .8rem;
+  height: .8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  background-color: gray;
+
+  transition: background-color 200ms ease-in-out, width 200ms ease-in-out;
+}
+
+.carousel .indicator.active {
+  width: 1.5rem;
+  background-color: black;
+}

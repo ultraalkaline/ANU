@@ -1,0 +1,48 @@
+@keyframes growIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scroll {
+	to {
+		translate: calc(-50% - 5px);
+	}
+}
+
+@keyframes n60Showcase {
+  0%, 100% {
+    background-image: url('../../img/n60_showcase.jpg');
+  }
+  33% {
+    background-image: url('../../img/n60_showcase1.jpg');
+  }
+  66% {
+    background-image: url('../../img/n60_showcase2.jpg');
+  }
+}

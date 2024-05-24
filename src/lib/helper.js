@@ -8,6 +8,36 @@ export function importAll(r) {
   return files;
 }
 
+export function importInfiniteCarouselMedia() {
+
+  let mediaFiles = {};
+
+  mediaFiles = import.meta.glob('./img/infinite-carousel/*.(mp4|webm|webp)', {query: "?url", eager: true});
+  
+  let fileArr = [];
+
+  Object.entries(mediaFiles).forEach(element => {
+    fileArr.push(element[1]);
+  });
+
+  fileArr.sort(function(a, b) {
+    // Extract the numbers from file paths using regular expressions
+    let numA, numB;
+
+    const regex = /(\d+)\.\w+$/;
+
+    try {
+      numA = parseInt(a.default.match(regex)[1]);
+      numB = parseInt(b.default.match(regex)[1]);
+    } catch (error) {
+    } 
+
+    return numA - numB;
+  });
+  
+  return fileArr;
+}
+
 export function removeClass(query, className) {
   document.querySelectorAll(query).forEach((element) => {
     if (element.classList.contains(className))

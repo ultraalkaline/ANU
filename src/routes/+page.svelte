@@ -1,15 +1,24 @@
 <script>
   import { slide } from 'svelte/transition';
   import ANUStar from '$lib/img/icons/ANU_Star.svg';
-    import { onMount } from 'svelte';
+  import ANGLE from '$lib/img/ANGLE.jpg';
+  import PLATEMATERIAL from '$lib/img/PLATE_MATERIAL.png';
+  import { onMount } from 'svelte';
+  import Carousel from 'svelte-carousel';
+  import * as THREE from 'three';
+
+  // COMPONENTS
+  import CarouselComponent from '$lib/components/Carousel.svelte';
 
   let carouselRef;
 
   let hamburgerRef;
   let mobileMenuRef;
 
+  const mountingImgs = ['src/lib/img/MOUNTING1.png', 'src/lib/img/MOUNTING2.png'];
+
   const duplicateCarousel = () => {
-    const carousel = document.querySelector('.feature.two .carousel');
+    const carousel = document.querySelector('.feature.two .infinite-carousel');
     const carouselContent = Array.from(carousel.children);
 
     carouselContent.forEach(item => {
@@ -103,22 +112,9 @@
         </ul>
       </div>
       <div class="feature two">
-        <ul class="carousel">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <div class="infinite-carousel">
+          
+        </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum. Phasellus placerat, ex ac lacinia sodales, purus ex luctus quam, eget molestie libero leo nec lectus. Fusce neque purus, sodales et rhoncus eget, mattis eu velit. In sit amet nunc pharetra, sollicitudin sapien in, dignissim metus. 
         </p>
@@ -134,12 +130,12 @@
             <h4 class="feature-title">TYPING&nbsp;ANGLE</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum.</p>
           </div>
-          <div class="placeholder"></div>
+          <img src={ANGLE}/>
         </div>
       </div>
 
       <div class="feature four">
-        <div class="placeholder"></div>
+        <img src={PLATEMATERIAL}/>
         <div class="text">
           <h4 class="feature-title">PLATE&nbsp;MATERIAL</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum.</p>
@@ -151,6 +147,9 @@
           <h4 class="feature-title">MOUNTING</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum.</p>
         </div>
+        
+        <CarouselComponent images={mountingImgs}/>
+        <!--
         <div class="container">
           <div class="placeholder"></div>
           <div class="dots">
@@ -159,6 +158,8 @@
             <span>&#x2022;</span>
           </div>
         </div>
+        -->
+        
       </div>
 
       <div class="feature six">
@@ -166,6 +167,7 @@
           <h4 class="feature-title">PLATE&nbsp;MATERIALS</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum.</p>
         </div>
+
         <div class="container">
           <div class="placeholder"></div>
           <div class="placeholder"></div>
@@ -199,7 +201,7 @@
       </div>
 
       <div class="feature nine">
-        <div class="rubber-feet"></div>
+        <canvas class="rubber-feet"></canvas>
         <div class="text">
           <h4 class="feature-title">RUBBER&nbsp;FEET</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor eros vitae lorem imperdiet rutrum.</p>
@@ -233,7 +235,7 @@
             <p>Lorem ipsum dolor sit amet</p>
           </div>
           <div class="text">
-            <h4 class="feature-title">LAYOUT</h4>
+            <h4 class="feature-title">PLATE&nbsp;MATERIAL</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
           <div class="text">

@@ -1,6 +1,6 @@
 /* LIBRARIES */
-@import 'normalize.css';
-@import 'animations.css';
+@import './helpers/normalize.css';
+@import './helpers/animations.css';
 
 /* FONTS */
 @import './fonts/clash-grotesk.css';
@@ -11,13 +11,11 @@
   --colorDark: rgb(31, 31, 31);
   --colorLight: #d3d3d3;
   --colorANURed: #EC1C27;
-  --colorTextBlue: #0F56F4;
+  --colorWhite: #FAF9F6;
+  --colorTextLight: #FAF9F6;
   --colorTextDark: #F5F5F5;
   --colorTextPrimary: rgb(73, 73, 73);
   --colorTextSecondary: rgb(104, 104, 104);
-  --colorThresholdLine: rgb(154, 154, 154);
-  --colorGridBorder: #F5F5F5;
-  --colorProjectImgBorder: #0f57f479;
   --colorIntersecting: #0f57f4;
 
   --colorTransparent: rgba(0, 0, 0, 0);
@@ -36,6 +34,8 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  background: var(--colorWhite);
   
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -129,6 +129,21 @@ p, a, li, h1, h2, h3, h4 {
 
   margin-left: 2rem;
   margin-top: -8rem;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  animation: n60Showcase 20s ease infinite;
+}
+
+.slide::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(2px);
 }
 
 .slide-content, .slide-footer {
@@ -157,12 +172,13 @@ p, a, li, h1, h2, h3, h4 {
   font-family: Eurostile Regular;
   font-size: .8rem;
   font-weight: 400;
-  color: white;
+  color: var(--colorTextDark);
 
   background: none;
   border: 1px solid var(--colorANURed);
   border-radius: 2rem;
 
+  cursor: pointer;
   transition: all 250ms ease;
 }
 
@@ -176,7 +192,7 @@ p, a, li, h1, h2, h3, h4 {
 }
 
 .slide-footer button:hover {
-  color: white;
+  color: #FAF9F6;
 }
 
 .feature {
@@ -245,7 +261,7 @@ p, a, li, h1, h2, h3, h4 {
   gap: 5rem;
 }
 
-.feature.two .carousel {
+.feature.two .infinite-carousel {
   display: flex;
   width: max-content;
   gap: 2rem;
@@ -260,7 +276,7 @@ p, a, li, h1, h2, h3, h4 {
   }
 }
 
-.feature.two .carousel li {
+.feature.two .infinite-carousel li {
   width: 25rem;
   height: 25rem;
 
@@ -318,10 +334,10 @@ p, a, li, h1, h2, h3, h4 {
   font-size: 1.2rem;
 }
 
-.feature.three .content .placeholder {
-  width: 30rem;
+.feature.three .content img {
+  width: max-content;
   height: 25rem;
-  background: lightgrey;
+  object-fit: cover;
   border-radius: 2rem;
 }
 
@@ -332,10 +348,11 @@ p, a, li, h1, h2, h3, h4 {
   padding-right: 15rem;
 }
 
-.feature.four .placeholder {
+.feature.four img {
   width: 35rem;
   height: 30rem;
-  background: lightgrey;
+  object-fit: cover;
+  background: black;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
@@ -349,30 +366,6 @@ p, a, li, h1, h2, h3, h4 {
 
   padding: 5rem 10rem;
   gap: 8rem;
-}
-
-.feature.five .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.feature.five .placeholder {
-  width: 38rem;
-  height: 30rem;
-  background: black;
-  border-radius: 2rem;
-}
-
-.feature.five .dots span {
-  font-size: 3.5rem;
-  padding: 0 .4rem;
-  color: grey;
-}
-
-.feature.five .dots span.active {
-  color: black;
 }
 
 .feature.six {
@@ -446,6 +439,7 @@ p, a, li, h1, h2, h3, h4 {
 .feature.seven .content .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 3rem;
 }
 
@@ -454,6 +448,7 @@ p, a, li, h1, h2, h3, h4 {
   height: 25rem;
   background: black;
   border-radius: 2rem;
+  flex: 1;
 }
 
 .feature.eight {
@@ -587,13 +582,16 @@ p, a, li, h1, h2, h3, h4 {
   flex-wrap: wrap;
   justify-content: start;
   align-items: start;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.feature.twelve .content .text {
+  flex: 1;
 }
 
 .feature.twelve .content .text p {
   font-size: 1.2rem;
 }
-
 
 @media only screen and (max-width: 1500px) {
   .header h1 {
